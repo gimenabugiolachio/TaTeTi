@@ -1,0 +1,13 @@
+<div class="outer-cont">
+    <h2>A JUGAR!</h2>
+    <h3>Nombre del jugador: {{player}}</h3>
+
+    <h3>Jugador {{winner}} ha ganado!!!</h3>
+    <h3>Empate</h3>
+    <button>Iniciar Juego</button>
+
+    <main>
+        <app-board *ngFor="let val of squares;let i=index" [value]="val" (click)="makeMove"></app-board>
+    </main>
+
+</div>
