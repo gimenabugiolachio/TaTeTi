@@ -1,13 +1,33 @@
-<div class="outer-cont">
-    <h2>A JUGAR!</h2>
-    <h3>Nombre del jugador: {{player}}</h3>
-
-    <h3>Jugador {{winner}} ha ganado!!!</h3>
-    <h3>Empate</h3>
-    <button>Iniciar Juego</button>
-
-    <main>
-        <app-board *ngFor="let val of squares;let i=index" [value]="val" (click)="makeMove"></app-board>
-    </main>
-
+<div class="background">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 </div>
+<div class="outer-cont">
+    <h2 *ngIf="freshpage">¡A jugar Ta-Te-Ti!</h2>
+    <h1 *ngIf="!winner && !isdraw && !freshpage">Jugador: {{player}}</h1>
+    <h2 *ngIf="winner">Jugador {{winner}} ha ganado</h2>
+    <h2 *ngIf="isdraw">Empate</h2>
+    <button *ngIf="winner || isdraw || freshpage" outline (click)="newGame()">Iniciar Juego</button>
+  
+    <main *ngIf="!winner && !isdraw">
+      <app-board *ngFor="let val of squares; let i = index" [value]="val" (click)="makeMove(i)"></app-board>
+    </main>
+  </div>
